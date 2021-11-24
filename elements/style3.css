@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
+
+body{
+    background: black;
+    color: white;
+    font-family: 'Cinzel Decorative';
+}
+h2{
+    padding: 10px;
+    font-size: 2.1rem;
+}
+.form-insc{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.form-insc input{
+    padding: 7px;
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    border: none;
+    background: transparent;
+    border-bottom: 3px solid #b14b35;
+    font-size: 1.1rem;
+    color: white;
+}
+.form-insc label{
+    padding: 15px;
+    margin-top: 25px;
+    font-size: 1.1rem;
+    margin-left: 0;
+    margin-right: auto;
+}
+.form-insc button{
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 55%;
+    margin-top: 45px;
+    background: #d6b587;
+    transition-duration: 1s;
+    font-size: 1.1rem;
+    font-family: 'Cinzel Decorative';
+    cursor: pointer;
+}
+.form-insc button:hover{
+    background: #b14b35 ;
+}
+#accueil{
+    text-decoration: none;
+    background:  #b14b35  ;
+    position: absolute;
+    border-radius: 5px;
+    padding: 8px;
+    top: 15px;
+    left: 10px; 
+    color: white;
+    font-size: 1rem;
+    transition-duration: 0.8s;
+}
+#accueil:hover{
+    background: rgba(0, 0, 0, 0.473);
+    color: #b14b35 ;
+}
+.form-insc a{
+    text-decoration: none;
+    color: #b14b35;   
+}
+#mess{
+    margin-top: 30px;
+    font-size: 1.15rem;
+}

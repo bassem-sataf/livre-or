@@ -32,7 +32,7 @@ else{
 ?>
  <html>
      <head>
-        <link rel="stylesheet" href="./">
+        <link rel="stylesheet" href="./elements/style2.css">
      </head>
      <body>
         <div class="global">
@@ -57,9 +57,6 @@ else{
                 <button type="submit" value="send" name="send">Valider</button>
             </form>
                 <h3>Vous n'avez pas de compte ? <a href="./inscription.php">inscrivez-vous</a></h3>
-            </div>
-            <div class="background">
-                <img src="./assets/bg" alt="">
             </div>
         </div>
     </body>

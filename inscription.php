@@ -26,14 +26,14 @@ $sql_log = mysqli_query($bdd, "SELECT login FROM utilisateurs WHERE login = '$tx
 }
 ?>
 
-<link rel="stylesheet" href="./">
+<link rel="stylesheet" href="./elements/style3.css">
 
 
 <div class="global">
     <a id="accueil" href="./index.php">Retour à l'accueil</a>
     <div class="form-insc">
         <h2>Veuillez vous inscrire</h2>
-        <form method="post">
+        <form class="form-insc" method="post">
             <label for="login">login :</label>
             <input name="login" id="login" type="text" required="" />
             <label for="password">password :</label>
@@ -52,8 +52,5 @@ $sql_log = mysqli_query($bdd, "SELECT login FROM utilisateurs WHERE login = '$tx
             <button type="submit" value="send" name="send">Valider</button>
         </form>
         <h3>Vous avez déjà un compte ? <a href="./connexion.php">connectez-vous</a></h3>
-    </div>
-    <div class="background">
-        <img src="./assets/bg" alt="">
     </div>
 </div>

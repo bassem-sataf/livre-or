@@ -19,22 +19,36 @@ if (isset($_SESSION['login'])){
             $id = $value['0'];
         }
     
-
         $requete = "INSERT INTO `commentaires` (`commentaire`, `id_utilisateur`, `date`) VALUES ('$commentaire', '$id', '$date')";
         $sql = mysqli_query($bdd, $requete );
-        var_dump($requete);
+        $message = "Merci de votre participation votre commentaire a été ajouté.";
     }
 
     ?>
+    <link rel="stylesheet" href="./elements/style5.css">
+        
+        <a id="link1" href='./livre-or.php'>Livre d'or</a>
+        <a id="link2" href='index.php'>Accueil</a>
+    
+    <h1>Ecrivez votre avis sur notre nouveau parfum LUIZA içi</h1>
+    
     <form method="post">
-    <label for="commentaire">commentaire :</label>
-    <input name="commentaire" type="text" required=""/>
-    <input type="submit" name="submit">
+        <label for="commentaire">commentaire :</label>
+        <textarea name="commentaire" cols="30" rows="7"></textarea>
+            <h4>
+                <?php if(isset($message)){
+                    echo $message;   
+                }   ?>
+            </h4>
+        <button type="submit" name="submit">Envoyer</button>
     </form>
-
+    
+    <img id="img1" src="./assets/parfum.jpg" height="200" alt="#">
+    <img id="img2" src="./assets/parfumf.jpg" height="200" alt="#">
+    
   <?php   
 }
 else{
-        echo '<center><b>Vous devez vous connecter pour acceder à la page réseaux</center><br />';
+        header("location:connexion.php");
 }
 
