@@ -17,7 +17,9 @@ else{
         if($txtpassword==$txtconf_password){
         
         $requete = "UPDATE utilisateurs SET login='$txtlogin', password='$txtpassword' WHERE login = '$user'";
-        mysqli_query($bdd,$requete);}
+        mysqli_query($bdd,$requete);
+        $message = "Vos données ont bien été modifiées.";
+        }
         else{
             $message = "Les mots de passes ne sont pas identiques";
         }
