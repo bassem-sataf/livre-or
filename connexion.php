@@ -1,66 +1,51 @@
-<?php
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./elements/style2.css">
+    <title>Connexion</title>
+</head>
+<body>
 
-session_start();
-
-require("./elements/bdd.php");
-
-if(isset($_POST['login']) && isset($_POST['password'])){
-  
-
-    $login = $_POST['login'];
-    $password = $_POST['password'];
-            
-    $sql = "SELECT * FROM utilisateurs WHERE login = '$login' AND password = '$password' ";
-    $request = mysqli_query( $bdd, $sql);
-    $count = mysqli_num_rows($request);
-
-        if($count==1){
-            $_SESSION['login']= $login;
-        }
-        else{
-            $message = "Le mot de passe ou login est incorrect.";
-        }
-}
-if(isset($_SESSION['login'])){
-    $login_session = $_SESSION['login'];
-    
-    header("location:./index.php");
-    
-}
-else{
-
-?>
- <html>
-     <head>
-        <link rel="stylesheet" href="./elements/style2.css">
-     </head>
-     <body>
-        <div class="global">
-            <a id="accueil" href="./index.php">Retour à l'accueil</a>
-            <div class="form-conn">
-                <h2>Veuillez vous connecter</h2>
-            <form class="form-conn" action="" method="post">
+    <div class="global">
+    <a id="accueil" href="./index.php">Retour à l'accueil</a>
+        <div class="form-conn">
+            <h2>Veuillez vous connecter</h2>
+            <form class="form-conn" method="post">
                 <label for="login">login :</label>
-                <input name="login" id="login" type="text" required="" />
+                <input name="login" type="text" />
                 <label for="password">password :</label>
-                <input name="password" id="password" type="password" required=""/>
-                <p id="mess">
-                <?php
-                    if(isset($count)){
-                        if($count==1){
-                        } else {
-                            echo $message;
-                        }
-                    }
-                ?>
-                </p>
-                <button type="submit" value="send" name="send">Valider</button>
+                <input name="password" type="password" />
+                <button type="submit" name="submit">Valider</button>
             </form>
-                <h3>Vous n'avez pas de compte ? <a href="./inscription.php">inscrivez-vous</a></h3>
-            </div>
+            <h3>Vous n'avez pas de compte ? <a href="./inscription.php">inscrivez-vous</a></h3>
+            <p id="mess">
+    <?php
+
+    if(isset($_POST['submit'])){
+
+        $login = $_POST['login']  ;
+        $password = $_POST['password'];
+
+        require "./app/database.php";
+        require "./app/log.php";
+        require "./app/connexionControle.php";
+
+        $connexion = new connexionControle($login, $password);
+
+        $connexion->connexionUser();    
+
+
+    }
+    ?>
+            </p>
         </div>
-    </body>
+    </div>
+</body>
 </html>
 
-<?php   }
+
+
 

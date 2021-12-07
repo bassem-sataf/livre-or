@@ -4,6 +4,7 @@ body{
     background: black;
     color: white;
 }
+
 #link1{
     position: absolute;
     text-decoration: none;
@@ -75,8 +76,9 @@ h1{
 }
 h4{
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: #b14b35 ;
+    font-family: 'Cinzel Decorative';
 }
 #img1{
     position: absolute;

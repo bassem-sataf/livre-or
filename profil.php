@@ -1,49 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./elements/style6.css">
+    <title>Profil</title>
+</head>
+<body>
+    <h1>Modifier vos données personnelles </h1>
+        <a id="accueil" href="./index.php">Retour à l'accueil</a>
+        <div class="formulaire">
+            <form class="form-insc" method="post">
+
 <?php
-
 session_start();
-if (empty($_SESSION['login']))
+
+if(isset($_SESSION['id']))
 {
-    header("location:./connexion.php");
-}
-else{
-    $user = $_SESSION['login'];
+    $id = $_SESSION['id'];
 
-    require("./elements/bdd.php");
+    require "./app/database.php";
+    require "./app/prof.php";
 
-    if(isset($_POST['login'])){
-        $txtlogin = $_POST['login'];
-        $txtpassword = $_POST['password'];
-        $txtconf_password = $_POST['conf_password'];
-        if($txtpassword==$txtconf_password){
+    $prof = new prof();
+    $result = $prof->getLogin($id);
         
-        $requete = "UPDATE utilisateurs SET login='$txtlogin', password='$txtpassword' WHERE login = '$user'";
-        mysqli_query($bdd,$requete);
-        $message = "Vos données ont bien été modifiées.";
-        }
-        else{
-            $message = "Les mots de passes ne sont pas identiques";
+    foreach($result as $value)
+    {
+        $login = $value['login'];
+
+        echo '<label for="login">login :</label>';
+        echo "<input name='login' value=$login type='text' />";
+        echo '<label for="newpassword">New password :</label>';
+        echo '<input name="newpassword" type="password" />';
+        echo '<label for="passwordRep">confirm New password :</label>';
+        echo '<input name="passwordRep" type="password" />';
+        echo '<button type="submit" name="submit">Valider</button>';
+
+
+        if(isset($_POST['submit']))
+        {
+            $newlogin = $_POST['login']  ;
+            $newpassword = $_POST['newpassword'];
+            $passwordRep = $_POST['passwordRep'];
+
+            require "./app/profilControle.php";
+            
+            $newLogs = new profilControle($newlogin, $newpassword, $passwordRep, $id); 
+            $newLogs->newLogs();
         }
     }
-        
-    ?>         
-                <link rel="stylesheet" href="./elements/style6.css">     
-                
-                <h1>Modifier vos données personnelles </h1>
-                <a id="accueil" href="./index.php">Retour à l'accueil</a>
-                <div class="formulaire">
-                <form method="post">
-                <label for="login">login :</label>
-                <input name="login" id="login" type="text" required="" />
-                <label for="password">password :</label>
-                <input name="password" id="password" type="password" required=""/>
-                <label for="conf_password">confirm password :</label>
-                <input name="conf_password" id="conf_password" type="password" required=""/>
-                <p> 
-                    <?php if(isset($message)){
-                    echo $message;
-                    }?>
-                </p>
-                <button type="submit" value="send" name="send">Valider</button>
-                </form>
-                </div>
-<?php ;} ?>
+}
+
+?>
+
+                        
+            </form>
+        </div>
+</body>
+</html>
+
+
