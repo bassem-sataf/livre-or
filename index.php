@@ -47,7 +47,10 @@ session_start();
                         <p>Premiere visite ?</p>
                         <a href='inscription.php'>inscrivez-vous </a>
                     </section>
-
+                    <section>
+                        <p>Lire les avis :</p>
+                        <a href='livre-or.php'>Livre d'or</a>
+                    </section>
                     <section>
                         <p>Déjà inscrit ? alors</p>
                         <a href='connexion.php'>connectez-vous </a>
