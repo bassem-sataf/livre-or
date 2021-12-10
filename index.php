@@ -13,7 +13,7 @@ session_start();
     
     <main>
         <div class="global">
-            <a id="git" href="https://github.com/bassem-sataf/module-connexion">https://github.com/bassem-sataf/module-connexion</a>
+            <a id="git" href="https://github.com/bassem-sataf/livre-or">https://github.com/bassem-sataf/livre-or</a>
         
         <?php
             if(isset($_SESSION['login'])){ ?>
