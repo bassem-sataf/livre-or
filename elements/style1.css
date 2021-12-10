@@ -81,3 +81,11 @@ h4{
     color: black;
     background: #b14b35;
 }
+#git{
+    position: absolute;
+    color: white;
+    font-weight: 600;
+    top: 25%;
+    left: auto;
+	right: 13%;
+}
